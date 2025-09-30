@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
         Rigidbody2D = GetComponent<Rigidbody2D>(); 
    }
 
-
     void Update()
 
     {
