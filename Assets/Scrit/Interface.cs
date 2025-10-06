@@ -11,8 +11,9 @@ public interface IInteractable
 
 public interface IDrodObject 
 {
-    public void Object(GameObject od);
-} 
+   public void Drop(GameObject dropper);
+
+}
 
 public  interface Attatk 
 {

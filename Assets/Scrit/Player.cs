@@ -3,42 +3,47 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   Rigidbody2D Rigidbody2D;
+   Rigidbody2D _rigidbody2D;
    [SerializeField] float speed;
+   Vector2 direccion;
      
    void Start()
    {
-        Rigidbody2D = GetComponent<Rigidbody2D>(); 
+        _rigidbody2D = GetComponent<Rigidbody2D>(); 
    }
 
     void Update()
 
     {
-        Vector2 caminar = Vector2.zero;
+           direccion = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A))
         {
-            caminar += Vector2.left;
+             direccion += Vector2.left;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            caminar += Vector2.right;
+            direccion += Vector2.right;
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            caminar += Vector2.up;
+            direccion += Vector2.up;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            caminar += Vector2.down;
+            direccion += Vector2.down;
         }
 
-        caminar = caminar.normalized; 
+        direccion = direccion.normalized;
 
-        Rigidbody2D.linearVelocity = caminar * speed;
+   
+
     }
-    
+        public void FixedUpdate()
+        {
+            _rigidbody2D.linearVelocity = direccion  * speed;
+        }
 }
