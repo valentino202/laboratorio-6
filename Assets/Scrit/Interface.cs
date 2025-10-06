@@ -19,3 +19,12 @@ public  interface Attatk
     public int AttacK(int damage);
 }
 
+public interface IConsumible
+{
+    void Consumir();
+}
+
+public interface IAplicarBuff
+{
+    void AplicarBuff();
+}
