@@ -22,7 +22,7 @@ public  interface IAttatk
 
 public interface IConsumible
 {
-    void Consumir();
+    void Consumir(GameObject objet);
 }
 
 public interface IAplicarBuff

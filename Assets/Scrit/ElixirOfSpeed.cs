@@ -19,7 +19,7 @@ public class ElixirOfSpeed : Items, IConsumible, IAplicarBuff
         Debug.Log("Se aplicó buff de velocidad a " + objet.name);
     }
 
-    public void Consumir()
+    public void Consumir(GameObject objet)
     {
          Debug.Log( Name + "consumido. Aplica buff de velocidad de " + Speedincrease +  " por " + Duration + " segundos.");
     }

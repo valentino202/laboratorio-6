@@ -11,7 +11,7 @@ public class LifePotion : Items, IConsumible
         _healing = Healing;
     }
 
-    public void Consumir()
+    public void Consumir(GameObject objet)
     {
         Debug.Log(Name + " cunsumida. cura " + Healing + " puntos de vida");
     }
