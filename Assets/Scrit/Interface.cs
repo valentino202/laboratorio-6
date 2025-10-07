@@ -15,7 +15,7 @@ public interface IDrodObject
 
 }
 
-public  interface Attatk 
+public  interface IAttatk 
 {
     public int AttacK(int damage);
 }
