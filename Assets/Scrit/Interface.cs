@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public interface IDamageable
 {
@@ -11,13 +12,13 @@ public interface IInteractable
 
 public interface IDrodObject 
 {
-   public void Drop(GameObject dropper);
+    Items DropearItem();
 
 }
 
 public  interface IAttatk 
 {
-    public int AttacK(int damage);
+    public void AttacK(Enemy damage);
 }
 
 public interface IConsumible

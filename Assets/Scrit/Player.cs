@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour, IAttatk
 {
   
-    private int liveP;
-    private int damage;
+   private int liveP;
+   private int damage;
    Rigidbody2D _rigidbody2D;
    [SerializeField] float speed;
    Vector2 direccion;
@@ -51,8 +51,9 @@ public class Player : MonoBehaviour, IAttatk
             _rigidbody2D.linearVelocity = direccion  * speed;
         }
 
-    public int AttacK(int damage)
+    public void AttacK (Enemy damage)
     {
-        throw new System.NotImplementedException();
+        Debug.Log( name + " ataca.");
+        damage.TakeDamage(Damage);
     }
 }
