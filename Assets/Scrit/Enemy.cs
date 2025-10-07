@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour, IDamageable, IDrodObject
 {
    [SerializeField] private string enemyname;
    [SerializeField] private int life = 10;
@@ -28,5 +28,15 @@ public abstract class Enemy : MonoBehaviour
     protected void ShowStatus()
     {
         Debug.Log("el : " +  Name +  "vida: " + Life + "nivel: " + Level);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        
+    }
+
+    public void Drop(GameObject dropper)
+    {
+        
     }
 }
