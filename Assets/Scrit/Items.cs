@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class Items 
+public abstract class Items : MonoBehaviour 
 {
-    private string _name;
-    private string _description;
+    [SerializeField] private string _name;
+    [SerializeField] private string _description;
 
     public string Name => _name;
     public string Description => _description;
@@ -12,5 +12,10 @@ public abstract class Items
     {
         _name = name;
         _description = description;
-    }   
+    }
+    public virtual void MostrarInfo()
+    {
+        Debug.Log(Name + " "+ Description);
+    }
 }
+

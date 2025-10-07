@@ -27,5 +27,5 @@ public interface IConsumible
 
 public interface IAplicarBuff
 {
-    void AplicarBuff();
+    void AplicarBuff(GameObject Object);
 }
