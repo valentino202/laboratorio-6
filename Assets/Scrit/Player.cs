@@ -5,8 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour, IAttatk
 {
   
-   private int liveP;
-   private int damage;
+ [SerializeField] private int liveP;
+ [SerializeField]  private int damage;
+ [SerializeField]  private float attackRange;
+ [SerializeField]  private LayerMask enemyLayer;
+
    Rigidbody2D _rigidbody2D;
    [SerializeField] float speed;
    Vector2 direccion;
@@ -45,7 +48,39 @@ public class Player : MonoBehaviour, IAttatk
 
         direccion = direccion.normalized;
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TryAttack();
+        }
+
     }
+
+    void TryAttack()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, enemyLayer);
+
+        if (hit != null)
+        {
+            Enemy enemy = hit.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                AttacK(enemy);
+            }
+        }
+        else
+        {
+            Debug.Log(" el enemigo no esta serca");
+        }
+
+       
+    }
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, attackRange);
+        }
+
+
         public void FixedUpdate()
         {
             _rigidbody2D.linearVelocity = direccion  * speed;

@@ -3,6 +3,8 @@ using static UnityEditor.Progress;
 
 public abstract class Enemy : MonoBehaviour, IDamageable, IDrodObject
 {
+    [SerializeField] private GameObject lifePotionPrefab;
+    [SerializeField] private GameObject elixirOfSpeedPrefab;
     [SerializeField] private string enemyname;
     [SerializeField] private int life = 10;
     [SerializeField] private int level = 1;
@@ -50,10 +52,33 @@ public abstract class Enemy : MonoBehaviour, IDamageable, IDrodObject
     protected Items itemADropear;
     public Items DropearItem()
     {
-        if (itemADropear != null)
-            return itemADropear;
-       
-        return new LifePotion("Pocion pequeña"," cura un poco de vida", 2);
-       
+        LifePotion pocionvida = new LifePotion("Poción pequeña", "Cura un poco de vida", 5);
+        ElixirOfSpeed pocion_de_velocidad = new ElixirOfSpeed("Elixir de Velocidad", "Aumenta la velocidad por un tiempo", 5, 10);
+
+        int random = Random.Range(0, 2);
+
+        Items itemDropeado;
+
+
+        if (random == 0)
+        {
+            itemDropeado = pocionvida;
+            if (lifePotionPrefab != null)
+                Instantiate(lifePotionPrefab, transform.position, Quaternion.identity);
+            else
+                Debug.LogWarning("Falta asignar el prefab de la Poción de Vida");
+        }
+        else
+        {
+            itemDropeado = pocion_de_velocidad;
+            if (elixirOfSpeedPrefab != null)
+                Instantiate(elixirOfSpeedPrefab, transform.position, Quaternion.identity);
+            else
+                Debug.LogWarning("Falta asignar el prefab del Elixir de Velocidad");
+        }
+
+        Debug.Log("Objeto dropeado: " + itemDropeado.Name);
+
+        return itemDropeado;
     }
 }
